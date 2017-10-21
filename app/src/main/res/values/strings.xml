@@ -8,6 +8,7 @@
     <string name="pain_name">Up Now working</string>
     <string name="task">Task name</string>
     <string name="task_type">null</string>
+    <string name="addNewMaterial">Add new Material</string>
     <string name="estmeted_time">estmeted_time</string>
     <string-array name="numbers_of_time" >
         <item> </item>
