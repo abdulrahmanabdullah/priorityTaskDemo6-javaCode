@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         manager = getFragmentManager();
         transaction = manager.beginTransaction();
         fragmentA();
+        fragmentB();
     }
 
 
@@ -88,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 // Fragment B ..
     public void fragmentB(){
         FragB fragB = new FragB();
-        transaction.add(R.id.frag_two_position,fragB,"fragB").commit();
+        FragmentTransaction tran = manager.beginTransaction();
+        tran.add(R.id.frag_two_position,fragB,"fragB").commit();
     }
 // Fragment C ..
     public void fragmentC(){
