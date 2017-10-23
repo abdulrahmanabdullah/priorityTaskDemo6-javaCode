@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PriorityTaskDemo7java.iml" filepath="$PROJECT_DIR$/PriorityTaskDemo7java.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/priorityTaskDemo6-javaCode.iml" filepath="$PROJECT_DIR$/priorityTaskDemo6-javaCode.iml" />
     </modules>

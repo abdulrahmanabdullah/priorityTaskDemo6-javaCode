@@ -27,11 +27,12 @@
     </FrameLayout>
 
     <!--Fragment 2 -->
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/frag_two_position"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </FrameLayout>
+    </LinearLayout>
     <!--Fragment 3 -->
     <FrameLayout
         android:id="@+id/frag_three_position"
