@@ -9,8 +9,17 @@ import java.util.List;
 
 public class ConstantList {
 
+    private String materil;
 // global list ...
     public static ArrayList<String> globalList = new ArrayList<>();
+
+    private void setMateril(String str){
+        materil = str ;
+    }
+
+    public String getMateril(){
+        return materil ;
+    }
 
     public ArrayList<String> getGlobalList(){
         globalList.add("java");
@@ -22,14 +31,22 @@ public class ConstantList {
         globalList.add("Android");
         return globalList;
     }
-    // static arrayList func ..
-    public static List<String> mList(){
-        List<String> mList = new ArrayList<>();
-        mList.add("Java");
-        mList.add("android");
-        mList.add("FireBase");
-        mList.add("kotlin");
-        mList.add("javaNetwork");
-        return mList ;
+    public static ArrayList<ConstantList> getData(){
+        ArrayList<ConstantList> list = new ArrayList<>();
+        String[] materils = allMaterial();
+        for (int i =0 ; i < materils.length ;i++){
+            ConstantList constantList = new ConstantList();
+            constantList.setMateril(materils[i]);
+            list.add(constantList);
+        }
+
+        return list ;
+    }
+    // create array to contain all target material ..
+    private static String[] allMaterial(){
+        String[] datas = {"java","kotlin","pattern design ","Android","jdk9","fireBase","uve.js","python"
+        ,"javaNetwork","web developer"};
+
+        return datas ;
     }
 }

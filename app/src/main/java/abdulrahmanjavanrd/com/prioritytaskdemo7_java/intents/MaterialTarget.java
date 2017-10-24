@@ -6,27 +6,16 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
-import android.view.View;
-
-import java.util.ArrayList;
-
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.R;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.adapter.MyRecyclerView;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.model.ConstantList;
 
 public class MaterialTarget extends AppCompatActivity {
 
+    // set ToolBar properties .
     Toolbar materialToolbar ;
     // recycler view ...
     RecyclerView recycler ;
-    // object of ConstantList.
-    ConstantList constantList  = new ConstantList();
-    // create current list to passing the recycler view
-    ArrayList<String> currentList = constantList.getGlobalList();
-    // get size of arraylist inside constant list . .
-    int numbersListItems = currentList.size();
-    // instance of MyRecycler view ...
     MyRecyclerView myRecyclerView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +30,8 @@ public class MaterialTarget extends AppCompatActivity {
 
     private void setUpRecycler(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recycler.setHasFixedSize(true);
         recycler.setLayoutManager(layoutManager);
-
-        myRecyclerView = new MyRecyclerView(numbersListItems);
+        myRecyclerView = new MyRecyclerView(ConstantList.getData());
         recycler.setAdapter(myRecyclerView);
     }
 }

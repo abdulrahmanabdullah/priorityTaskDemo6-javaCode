@@ -18,31 +18,19 @@ import abdulrahmanjavanrd.com.prioritytaskdemo7_java.model.ConstantList;
  */
 
 public class MyRecyclerView extends RecyclerView.Adapter<MyRecyclerView.MyviewHolder> {
-    // List
-    private int numbersItems ;
-private   ConstantList mData ;
-    private ArrayList<String> currentList ;
-private LayoutInflater mLayout ;
-
-private  int staticList;
+private ArrayList<ConstantList> mList ;
 /************ Constructor *******************/
-public MyRecyclerView(int totalItemInList){
-    this.mData = new ConstantList();
-    currentList = mData.getGlobalList();
-    this.numbersItems = totalItemInList ;
-    staticList = currentList.size();
+public MyRecyclerView(ArrayList<ConstantList> list){
+    mList = list;
 }
     @Override
     public MyviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     Context context = parent.getContext() ;
     LayoutInflater inflater = LayoutInflater.from(context);
     boolean shouldAttachToParentImmediately = false;
-
         View view =inflater.inflate(R.layout.layout_item_list,parent,shouldAttachToParentImmediately);
-
         // call inner class -> ViewHolder Class .
         MyviewHolder holder = new MyviewHolder(view);
-
         // return view with file layout and with context .
         return holder;
     }
@@ -50,12 +38,13 @@ public MyRecyclerView(int totalItemInList){
     @Override
     public void onBindViewHolder(MyviewHolder holder, int position) {
         Log.d("recycler","onBind : " + position);
-    holder.tv_items.setText(currentList.get(position));
+    ConstantList currentList = mList.get(position);
+    holder.bind(currentList,position);
     }
 
     @Override
     public int getItemCount() {
-        return staticList;
+        return mList.size();
     }
 
     /************ ViewHolder Class   *******************/
@@ -69,9 +58,11 @@ public MyRecyclerView(int totalItemInList){
             tv_items = view.findViewById(R.id.tv_itmes_list);
         }
 
-        void bind(int p){
-
+        void bind(ConstantList list , int p){
+            String str = list.getMateril();
+            tv_items.setText(str);
         }
+
     }
     /**********************End ViewHolder Class ******************************/
 
