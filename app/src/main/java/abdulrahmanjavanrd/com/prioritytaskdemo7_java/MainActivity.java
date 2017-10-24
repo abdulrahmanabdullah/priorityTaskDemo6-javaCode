@@ -1,7 +1,9 @@
 package abdulrahmanjavanrd.com.prioritytaskdemo7_java;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -18,8 +20,10 @@ import android.widget.Toast;
 
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.Fragments.FragA;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.Fragments.FragB;
+import abdulrahmanjavanrd.com.prioritytaskdemo7_java.intents.MyTargetIntent;
+import abdulrahmanjavanrd.com.prioritytaskdemo7_java.interfaces.ICallListMaterial;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,ICallListMaterial {
 
 
     // Fragment manager ..
@@ -95,5 +99,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 // Fragment C ..
     public void fragmentC(){
 
+    }
+    // call List material intent from fagB ...
+    @Override
+    public void callListMaterial() {
+        Intent mIntent = new Intent(this, MyTargetIntent.class);
+        startActivity(mIntent);
     }
 }

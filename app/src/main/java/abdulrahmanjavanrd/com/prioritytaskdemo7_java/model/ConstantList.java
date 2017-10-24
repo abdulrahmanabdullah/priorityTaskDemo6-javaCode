@@ -14,6 +14,9 @@ public class ConstantList {
 
     public ArrayList<String> getGlobalList(){
         globalList.add("java");
+        globalList.add("jvm");
+        globalList.add("vue.js");
+        globalList.add("FireBase");
         globalList.add("java 9 ");
         globalList.add("java module");
         globalList.add("Android");
