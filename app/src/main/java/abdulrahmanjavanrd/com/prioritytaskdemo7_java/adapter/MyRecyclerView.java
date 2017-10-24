@@ -2,6 +2,7 @@ package abdulrahmanjavanrd.com.prioritytaskdemo7_java.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +24,13 @@ private   ConstantList mData ;
     private ArrayList<String> currentList ;
 private LayoutInflater mLayout ;
 
+private  int staticList;
 /************ Constructor *******************/
 public MyRecyclerView(int totalItemInList){
     this.mData = new ConstantList();
     currentList = mData.getGlobalList();
     this.numbersItems = totalItemInList ;
+    staticList = currentList.size();
 }
     @Override
     public MyviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,12 +49,13 @@ public MyRecyclerView(int totalItemInList){
 
     @Override
     public void onBindViewHolder(MyviewHolder holder, int position) {
+        Log.d("recycler","onBind : " + position);
     holder.tv_items.setText(currentList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return numbersItems;
+        return staticList;
     }
 
     /************ ViewHolder Class   *******************/

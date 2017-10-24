@@ -33,17 +33,16 @@ public class FragB extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_b_layout,container,false);
         mRecycler = view.findViewById(R.id.re_list_frag_b);
-        setUpRecycler();
         return view ;
     }
 
 
-    public void setUpRecycler(){
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        mRecycler.setLayoutManager(layoutManager);
-        ArrayList<String> list = mConstantList.getGlobalList();
-        int totalItemInList = list.size();
-        MyRecyclerView recyclerView = new MyRecyclerView(totalItemInList);
-        mRecycler.setAdapter(recyclerView);
-    }
+//    public void setUpRecycler(){
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//        mRecycler.setLayoutManager(layoutManager);
+//        ArrayList<String> list = mConstantList.getGlobalList();
+//        int totalItemInList = list.size();
+//        MyRecyclerView recyclerView = new MyRecyclerView(totalItemInList);
+//        mRecycler.setAdapter(recyclerView);
+//    }
 }

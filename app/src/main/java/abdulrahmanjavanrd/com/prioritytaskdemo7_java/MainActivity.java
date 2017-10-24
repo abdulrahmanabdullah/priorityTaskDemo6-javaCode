@@ -2,22 +2,22 @@ package abdulrahmanjavanrd.com.prioritytaskdemo7_java;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
-
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.Fragments.FragA;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.Fragments.FragB;
+import abdulrahmanjavanrd.com.prioritytaskdemo7_java.intents.MaterialTarget;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -95,5 +95,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 // Fragment C ..
     public void fragmentC(){
 
+    }
+    public void showAllMaterial(View view){
+        // Now create new Intent to contain list material and adapter for recycler .
+        Intent mIntent = new Intent(this,MaterialTarget.class);
+        startActivity(mIntent);
     }
 }

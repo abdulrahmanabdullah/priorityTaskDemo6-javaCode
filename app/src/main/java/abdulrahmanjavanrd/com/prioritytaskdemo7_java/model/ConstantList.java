@@ -15,19 +15,21 @@ public class ConstantList {
     public ArrayList<String> getGlobalList(){
         globalList.add("java");
         globalList.add("java 9 ");
+        globalList.add("java 9 ");
+        globalList.add("java 9 ");
+        globalList.add("java 9 ");
         globalList.add("java module");
         globalList.add("Android");
         return globalList;
     }
     // static arrayList func ..
-    public static List<String> mList(String str){
+    public static List<String> mList(){
         List<String> mList = new ArrayList<>();
         mList.add("Java");
         mList.add("android");
         mList.add("FireBase");
         mList.add("kotlin");
         mList.add("javaNetwork");
-        globalList.add(str);
-        return globalList ;
+        return mList ;
     }
 }

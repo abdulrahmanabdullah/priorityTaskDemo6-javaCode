@@ -7,15 +7,4 @@
     android:layout_height="match_parent">
 
 
-        <Button
-            android:layout_marginBottom="10dp"
-            android:id="@+id/btn_add_new_material"
-            android:text="@string/addNewMaterial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/re_list_frag_b"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 </LinearLayout>
