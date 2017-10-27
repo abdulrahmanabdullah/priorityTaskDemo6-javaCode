@@ -17,9 +17,11 @@
             android:layout_width="match_parent"
             android:elevation="4dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ToolbarTheme"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
+
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
