@@ -11,6 +11,8 @@
     <string name="addNewMaterial">Show all  Materials </string>
     <string name="estmeted_time">estmeted_time</string>
     <string name="material_list">Material List</string>
+    <string name="title_main_page">Priority Task</string>
+    <string name="sub_title_main_page">Let\'s sort your task</string>
     <string-array name="numbers_of_time">
         <item> </item>
         <item>0 </item>

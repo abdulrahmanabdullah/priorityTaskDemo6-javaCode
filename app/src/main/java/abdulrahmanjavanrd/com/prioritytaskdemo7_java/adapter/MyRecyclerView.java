@@ -1,11 +1,13 @@
 package abdulrahmanjavanrd.com.prioritytaskdemo7_java.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -52,15 +54,21 @@ public MyRecyclerView(ArrayList<ConstantList> list){
     class MyviewHolder extends RecyclerView.ViewHolder{
         // declare TextView, that in layout_item_list file .
         TextView tv_items ;
+        ImageView imageView ;
+        ConstantList currentList ;
+        int position ;
        /**********Constructor **************/
         public MyviewHolder (View view){
             super(view);
             tv_items = view.findViewById(R.id.tv_itmes_list);
+            imageView = view.findViewById(R.id.img_card);
         }
 
         void bind(ConstantList list , int p){
-            String str = list.getMateril();
-            tv_items.setText(str);
+            tv_items.setText(list.getMateril());
+            imageView.setImageResource(list.getImageID());
+            this.currentList = list ;
+            this.position = p ;
         }
 
     }

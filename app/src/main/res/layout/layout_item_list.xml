@@ -8,18 +8,52 @@
 
 <android.support.v7.widget.CardView
     android:layout_width="match_parent"
-    android:layout_margin="5dp"
+    android:layout_margin="8dp"
+    android:padding="16dp"
     android:layout_height="match_parent"
     app:cardCornerRadius="4dp"
-
     >
-    <TextView
-        android:id="@+id/tv_itmes_list"
-        android:textAlignment="center"
-        android:fontFamily="serif-monospace"
-        android:textSize="40sp"
-        style="@style/TextAppearance.AppCompat.Title"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_card"
+            android:src="@drawable/kotlin02"
+            android:layout_gravity="center"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <TextView
+            android:id="@+id/tv_itmes_list"
+            android:textAlignment="center"
+            android:fontFamily="serif-monospace"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="right"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/ic_add_item_2"
+                android:layout_gravity="right"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@drawable/ic_delte_item"
+                android:layout_width="wrap_content"
+                android:clickable="true"
+                android:layout_gravity="right"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 </android.support.v7.widget.CardView>
     </LinearLayout>

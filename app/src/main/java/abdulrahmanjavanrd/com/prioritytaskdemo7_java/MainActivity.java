@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
        //toolbar
         Toolbar toolbar =findViewById(R.id.toolbar_layout);
+        toolbar.setTitle(R.string.title_main_page);
+        toolbar.setSubtitle(R.string.sub_title_main_page);
         setSupportActionBar(toolbar);
         // Drawer layout
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -62,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        if (item.getItemId() == R.id.setting_btn){
+            Toast.makeText(this,"setting" , Toast.LENGTH_LONG).show();
+        }
         return true;
     }
 
