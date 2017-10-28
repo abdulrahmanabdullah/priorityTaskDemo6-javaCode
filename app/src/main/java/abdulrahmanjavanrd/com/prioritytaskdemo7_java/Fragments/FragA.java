@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class FragA extends Fragment {
     private Button start_button ;
    private List<String> spinner1List = new ArrayList<>();
    private List<String> spinner2List = new ArrayList<>();
+   private TextView taskType ;
     // sum of numbers and converted hours or day or month .
     public  int totalSum ;
     @Override
@@ -37,6 +39,11 @@ public class FragA extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_a_layout,container,false);
+        Bundle bundle = getArguments();
+        String task = bundle.getString("task");
+        taskType = v.findViewById(R.id.task_type);
+        taskType.setText(task);
+        Toast.makeText(getActivity(),"This value from FragA:"+task,Toast.LENGTH_LONG).show();
         spinner1 = v.findViewById(R.id.sp_numbers);
         spinner2 = v.findViewById(R.id.sp_date);
         start_button = v.findViewById(R.id.start_button);

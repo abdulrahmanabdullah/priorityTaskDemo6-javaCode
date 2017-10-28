@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -107,11 +108,10 @@ public MyRecyclerView(ArrayList<ConstantList> list,Context ctx){
             switch (v.getId()){
                 case R.id.img_add_item :
                     String str = currentList.getMateril();
-                    Intent mIntent = new Intent(v.getContext(),MainActivity.class);
-                    mIntent.putExtra("k",str);
-                    v.getContext().startActivity(mIntent);
-
-                    addItme(position,currentList);
+                    Intent mIntent = new Intent(context,MainActivity.class);
+                    mIntent.putExtra("task",str);
+                    context.startActivity(mIntent);
+//                    addItme(position,currentList);
                     break;
                 case  R.id.img_del_item:
                     removeItem(position);

@@ -20,11 +20,11 @@ import abdulrahmanjavanrd.com.prioritytaskdemo7_java.Fragments.FragB;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.intents.MaterialTarget;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-
+ private static int REQUEST_CODE_MATERIAL_TARGET = 10;
     // Fragment manager ..
     private FragmentManager manager ;
     private FragmentTransaction transaction ;
+    public String receiveTask ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentA();
         fragmentB();
 
-        getWhichItemAdd();
     }
 
 
@@ -91,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // fragment 1 ..
     public void fragmentA(){
         FragA fragA = new FragA();
+        fragA.setArguments(sendValueToFragA());
         transaction.add(R.id.frag_one_position,fragA,"fragA").commit();
     }
 // Fragment B ..
@@ -103,15 +103,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void fragmentC(){
 
     }
+
+    // this method to show the Material Intent page .
     public void showAllMaterial(View view){
         // Now create new Intent to contain list material and adapter for recycler .
         Intent mIntent = new Intent(this,MaterialTarget.class);
         startActivity(mIntent);
     }
 
-    public void getWhichItemAdd(){
+    public boolean getWhichItemAdd(){
         Intent mIntent = getIntent();
-String str = mIntent.getStringExtra("k");
-        Toast.makeText(this," okay you doing well , : " + str , Toast.LENGTH_LONG).show();
+        if(mIntent != null)
+            receiveTask += mIntent.getStringExtra("task");
+        else
+            return false ;
+        Toast.makeText(this,"okay you doing well: " + receiveTask , Toast.LENGTH_LONG).show();
+        return true ;
+    }
+
+    private Bundle sendValueToFragA(){
+        Bundle bundle = new Bundle();
+        if(getWhichItemAdd()) // if true , send receiverTask .
+            bundle.putString("task",receiveTask);
+        else // if false send this text .
+            bundle.putString("task","Not avialble yet.");
+        return bundle;
     }
 }
