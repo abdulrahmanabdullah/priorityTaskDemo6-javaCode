@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction = manager.beginTransaction();
         fragmentA();
         fragmentB();
+
+        getWhichItemAdd();
     }
 
 
@@ -105,5 +107,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Now create new Intent to contain list material and adapter for recycler .
         Intent mIntent = new Intent(this,MaterialTarget.class);
         startActivity(mIntent);
+    }
+
+    public void getWhichItemAdd(){
+        Intent mIntent = getIntent();
+String str = mIntent.getStringExtra("k");
+        Toast.makeText(this," okay you doing well , : " + str , Toast.LENGTH_LONG).show();
     }
 }

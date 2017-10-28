@@ -43,11 +43,13 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:src="@drawable/ic_add_item_2"
+                android:id="@+id/img_add_item"
                 android:layout_gravity="right"
                 android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
+                android:id="@+id/img_del_item"
                 android:src="@drawable/ic_delte_item"
                 android:layout_width="wrap_content"
                 android:clickable="true"

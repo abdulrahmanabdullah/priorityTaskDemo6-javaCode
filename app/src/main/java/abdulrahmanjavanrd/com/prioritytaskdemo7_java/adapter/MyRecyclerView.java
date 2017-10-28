@@ -1,6 +1,8 @@
 package abdulrahmanjavanrd.com.prioritytaskdemo7_java.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,7 +14,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import abdulrahmanjavanrd.com.prioritytaskdemo7_java.MainActivity;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.R;
+import abdulrahmanjavanrd.com.prioritytaskdemo7_java.intents.MaterialTarget;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.model.ConstantList;
 
 /**
@@ -21,9 +25,16 @@ import abdulrahmanjavanrd.com.prioritytaskdemo7_java.model.ConstantList;
 
 public class MyRecyclerView extends RecyclerView.Adapter<MyRecyclerView.MyviewHolder> {
 private ArrayList<ConstantList> mList ;
+private Context context ;
+
+
+
+
+
 /************ Constructor *******************/
-public MyRecyclerView(ArrayList<ConstantList> list){
+public MyRecyclerView(ArrayList<ConstantList> list,Context ctx){
     mList = list;
+    this.context = ctx ;
 }
     @Override
     public MyviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -42,6 +53,7 @@ public MyRecyclerView(ArrayList<ConstantList> list){
         Log.d("recycler","onBind : " + position);
     ConstantList currentList = mList.get(position);
     holder.bind(currentList,position);
+    holder.setListener();
     }
 
     @Override
@@ -49,12 +61,25 @@ public MyRecyclerView(ArrayList<ConstantList> list){
         return mList.size();
     }
 
+    public void removeItem(int p){
+    mList.remove(p);
+    notifyItemRemoved(p);
+    notifyItemRangeChanged(p,mList.size());
+    }
+
+    public void addItme(int p , ConstantList list){
+        mList.add(p,list);
+        notifyItemInserted(p);
+        notifyItemRangeChanged(p,mList.size());
+    }
     /************ ViewHolder Class   *******************/
     // class view holder ...
-    class MyviewHolder extends RecyclerView.ViewHolder{
+    class MyviewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // declare TextView, that in layout_item_list file .
         TextView tv_items ;
         ImageView imageView ;
+        ImageView add_item ;
+        ImageView del_item ;
         ConstantList currentList ;
         int position ;
        /**********Constructor **************/
@@ -62,6 +87,8 @@ public MyRecyclerView(ArrayList<ConstantList> list){
             super(view);
             tv_items = view.findViewById(R.id.tv_itmes_list);
             imageView = view.findViewById(R.id.img_card);
+            add_item = view.findViewById(R.id.img_add_item);
+            del_item = view.findViewById(R.id.img_del_item);
         }
 
         void bind(ConstantList list , int p){
@@ -71,6 +98,26 @@ public MyRecyclerView(ArrayList<ConstantList> list){
             this.position = p ;
         }
 
+        public void setListener(){
+            add_item.setOnClickListener(MyviewHolder.this);
+            del_item.setOnClickListener(MyviewHolder.this);
+        }
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.img_add_item :
+                    String str = currentList.getMateril();
+                    Intent mIntent = new Intent(v.getContext(),MainActivity.class);
+                    mIntent.putExtra("k",str);
+                    v.getContext().startActivity(mIntent);
+
+                    addItme(position,currentList);
+                    break;
+                case  R.id.img_del_item:
+                    removeItem(position);
+                    break;
+            }
+        }
     }
     /**********************End ViewHolder Class ******************************/
 

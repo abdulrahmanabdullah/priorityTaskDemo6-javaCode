@@ -1,9 +1,11 @@
 package abdulrahmanjavanrd.com.prioritytaskdemo7_java.intents;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -41,8 +43,9 @@ public class MaterialTarget extends AppCompatActivity {
     private void setUpRecycler(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(layoutManager);
-        myRecyclerView = new MyRecyclerView(ConstantList.getData());
+        myRecyclerView = new MyRecyclerView(ConstantList.getData(),this);
         recycler.setAdapter(myRecyclerView);
+        recycler.setItemAnimator(new DefaultItemAnimator());
     }
 
     @Override
