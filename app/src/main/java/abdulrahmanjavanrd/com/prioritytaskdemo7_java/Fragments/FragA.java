@@ -1,8 +1,13 @@
 package abdulrahmanjavanrd.com.prioritytaskdemo7_java.Fragments;
 
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.R;
+import abdulrahmanjavanrd.com.prioritytaskdemo7_java.constant.ConstantValue;
+import abdulrahmanjavanrd.com.prioritytaskdemo7_java.services.TaskService;
 
 /**
  * Created by nfs05 on 20/10/2017.
@@ -52,6 +59,9 @@ public class FragA extends Fragment {
         start_button.setOnClickListener(view->{
             totalSum = convertData(String.valueOf(spinner1.getSelectedItem()),String.valueOf(spinner2.getSelectedItem()));
             Toast.makeText(getActivity(),"btn clicked :  "+totalSum ,Toast.LENGTH_LONG).show();
+            Intent sendService = new Intent(getActivity(), TaskService.class);
+            sendService.putExtra(ConstantValue.SEND_VALUE,20);
+            getActivity().startService(sendService);
         });
         return v ;
     }
@@ -108,5 +118,24 @@ public class FragA extends Fragment {
           totalSum = totalResult ;
        }
         return totalSum ;
+    }
+
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
+    };
+    @Override
+    public void onResume() {
+        IntentFilter fliter = new IntentFilter("my.action.to.receiver");
+        getActivity().registerReceiver(receiver,fliter);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        getActivity().unregisterReceiver(receiver);
+        super.onPause();
     }
 }
