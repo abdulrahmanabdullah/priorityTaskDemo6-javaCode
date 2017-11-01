@@ -45,7 +45,7 @@ public class TaskService extends Service {
     }
 
     // aysnc task inner class ..
-    class AsyncTaskInner extends AsyncTask<Integer,String,Void>{
+    class AsyncTaskInner extends AsyncTask<Integer,String,String>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -59,7 +59,7 @@ public class TaskService extends Service {
 
         // this method take a long running process .
         @Override
-        protected Void doInBackground(Integer... voids) {
+        protected String doInBackground(Integer... voids) {
             int ctr = voids[0];
             while(ctr >= 0){
                 publishProgress("Ctr = " + ctr );
@@ -70,13 +70,18 @@ public class TaskService extends Service {
                     e.printStackTrace();
                 }
             }
-            return null;
+            return "Done Task";
         }
 
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+        protected void onPostExecute(String str) {
+            super.onPostExecute(str);
+            stopSelf();
+            Intent mIntent = new Intent(ConstantValue.MY_ACTION_SERVICE);
+            mIntent.putExtra(ConstantValue.START_SERVICE_RESULT,str);
+            sendBroadcast(mIntent);
+
         }
     }
 

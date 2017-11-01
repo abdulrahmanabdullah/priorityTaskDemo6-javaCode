@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class FragA extends Fragment {
    private List<String> spinner1List = new ArrayList<>();
    private List<String> spinner2List = new ArrayList<>();
    private TextView taskType ;
-    // sum of numbers and converted hours or day or month .
+   private TextView txvShowResult ;
     public  int totalSum ;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,16 +53,18 @@ public class FragA extends Fragment {
         taskType = v.findViewById(R.id.task_type);
         taskType.setText(task);
         Toast.makeText(getActivity(),"This value from FragA:"+task,Toast.LENGTH_LONG).show();
+        txvShowResult = v.findViewById(R.id.txv_show_result_label);
         spinner1 = v.findViewById(R.id.sp_numbers);
         spinner2 = v.findViewById(R.id.sp_date);
         start_button = v.findViewById(R.id.start_button);
         // call spinner spinner2List .
         addItemsDynamic();
+        // OnClickListener Button. Event .
         start_button.setOnClickListener(view->{
             totalSum = convertData(String.valueOf(spinner1.getSelectedItem()),String.valueOf(spinner2.getSelectedItem()));
             Toast.makeText(getActivity(),"btn clicked :  "+totalSum ,Toast.LENGTH_LONG).show();
             Intent sendService = new Intent(getActivity(), TaskService.class);
-            sendService.putExtra(ConstantValue.SEND_VALUE,20);
+            sendService.putExtra(ConstantValue.SEND_VALUE,5);
             getActivity().startService(sendService);
         });
         return v ;
@@ -127,12 +131,19 @@ public class FragA extends Fragment {
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
+            String getResultData = intent.getStringExtra(ConstantValue.START_SERVICE_RESULT);
+            showResultLabel(getResultData);
         }
     };
+
+    // call show result label ..
+    public void showResultLabel(String str){
+       txvShowResult.setVisibility(View.VISIBLE);
+       txvShowResult.setText(str);
+    }
     @Override
     public void onResume() {
-        IntentFilter fliter = new IntentFilter("my.action.to.receiver");
+        IntentFilter fliter = new IntentFilter(ConstantValue.MY_ACTION_SERVICE);
         getActivity().registerReceiver(receiver,fliter);
         super.onResume();
     }

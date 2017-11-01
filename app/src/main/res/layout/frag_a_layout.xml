@@ -105,24 +105,27 @@ android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_marginRight="5dp"
-            android:id="@+id/txvTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/est_time"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:text="@string/show_time"
-            android:layout_gravity="center"
-            android:textSize="22sp" />
         <Button
             android:text="@string/start_button"
             android:id="@+id/start_button"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
+    <TextView
+        android:id="@+id/txv_show_result_label"
+        android:layout_below="@+id/cal_time"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:padding="6dp"
+        android:textColor="@color/White"
+        style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:textSize="24sp"
+        android:background="@color/ForestGreen"
+        android:text="Show result "
+        android:visibility="invisible"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
 </android.support.v7.widget.CardView>
