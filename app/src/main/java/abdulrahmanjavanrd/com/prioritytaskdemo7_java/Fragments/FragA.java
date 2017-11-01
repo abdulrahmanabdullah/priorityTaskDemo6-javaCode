@@ -71,12 +71,12 @@ public class FragA extends Fragment {
         spinner2List.add("");
         spinner2List.add("hours");
         spinner2List.add("Day");
-        spinner2List.add("Month");
+        spinner2List.add("Week");
         // arrayAdapter ..
          dataAdapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item, spinner2List);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(dataAdapter);
-        spinner1List.add("0");
+        spinner1List.add("");
         spinner1List.add("1");
         spinner1List.add("2");
         spinner1List.add("3");
@@ -88,32 +88,36 @@ public class FragA extends Fragment {
         spinner1List.add("9");
         dataAdapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item, spinner1List);
         spinner1.setAdapter(dataAdapter);
-
-
     }
-    // convert data
+    // convert data .. Done .
     private int convertData(String numberStr, String dataStr ){
        int resultNumbers = 0  ;
         int resultData = 0  ;
         int totalResult;
        if (numberStr != null && !numberStr.equals("") && (dataStr !=null && !dataStr.equals(""))){
-         // check numbers ..
+         // get numbers between 1 to 9 .
            for (int i =0 ; i < spinner1List.size() ; i++){
                if (numberStr == spinner1List.get(i)){
                    resultNumbers += i ;
                }
            }
-           if (dataStr.equals("Day") ){
-               resultData += 1000 ;
+           // if user choice Hours set result data = 60 minutes
+           if (dataStr.equalsIgnoreCase("hours") ){
+               resultData += 60 ;
            }
-           else if (dataStr.equalsIgnoreCase("hours")){
-               resultData += 600 ;
+           // if user choice day set result data = 1440 minutes
+           else if (dataStr.equalsIgnoreCase("day")){
+               resultData += 1440 ;
            }
-           else if (dataStr.equalsIgnoreCase("month")){
-               resultData += 5000;
+           // if user choice week set result data = 10080 minutes .
+           else if (dataStr.equalsIgnoreCase("week")){
+               resultData += 10080;
            }
+           // calculator numbers * result data, to Get total time.
            totalSum = resultData * resultNumbers;
-       }else {
+       }
+       // default set total result = -1 Because user not choice any arg.
+       else {
           totalResult = -1 ;
           totalSum = totalResult ;
        }
