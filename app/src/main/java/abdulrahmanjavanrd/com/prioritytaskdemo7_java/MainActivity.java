@@ -20,7 +20,6 @@ import abdulrahmanjavanrd.com.prioritytaskdemo7_java.Fragments.FragB;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.intents.MaterialTarget;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
- private static int REQUEST_CODE_MATERIAL_TARGET = 10;
     // Fragment manager ..
     private FragmentManager manager ;
     private FragmentTransaction transaction ;

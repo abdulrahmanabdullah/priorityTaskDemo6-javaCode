@@ -28,10 +28,6 @@ public class MyRecyclerView extends RecyclerView.Adapter<MyRecyclerView.MyviewHo
 private ArrayList<ConstantList> mList ;
 private Context context ;
 
-
-
-
-
 /************ Constructor *******************/
 public MyRecyclerView(ArrayList<ConstantList> list,Context ctx){
     mList = list;
@@ -120,5 +116,4 @@ public MyRecyclerView(ArrayList<ConstantList> list,Context ctx){
         }
     }
     /**********************End ViewHolder Class ******************************/
-
 }

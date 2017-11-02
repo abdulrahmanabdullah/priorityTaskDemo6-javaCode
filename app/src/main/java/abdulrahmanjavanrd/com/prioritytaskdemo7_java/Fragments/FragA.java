@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +15,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.R;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.constant.ConstantValue;
 import abdulrahmanjavanrd.com.prioritytaskdemo7_java.services.TaskService;
@@ -37,7 +32,7 @@ public class FragA extends Fragment {
    private List<String> spinner1List = new ArrayList<>();
    private List<String> spinner2List = new ArrayList<>();
    private TextView taskType ;
-   private TextView txvShowResult ;
+   public TextView txvShowResult ;
     public  int totalSum ;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -152,5 +147,14 @@ public class FragA extends Fragment {
     public void onPause() {
         getActivity().unregisterReceiver(receiver);
         super.onPause();
+    }
+
+      public class StaticallyBroadcastInner extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //TODO: receive message here .. then call change the label to visible, and put some msg.
+            String str= intent.getStringExtra(ConstantValue.START_SERVICE_RESULT);
+           showResultLabel(str);
+        }
     }
 }
