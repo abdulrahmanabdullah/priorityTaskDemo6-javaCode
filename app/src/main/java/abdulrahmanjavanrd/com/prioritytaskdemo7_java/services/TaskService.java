@@ -78,7 +78,7 @@ public class TaskService extends Service {
         protected void onPostExecute(String str) {
             super.onPostExecute(str);
             stopSelf();
-            Intent mIntent = new Intent(ConstantValue.MY_ACTION_SERVICE);
+            Intent mIntent = new Intent("test.my.action");
             mIntent.putExtra(ConstantValue.START_SERVICE_RESULT,str);
             sendBroadcast(mIntent);
 

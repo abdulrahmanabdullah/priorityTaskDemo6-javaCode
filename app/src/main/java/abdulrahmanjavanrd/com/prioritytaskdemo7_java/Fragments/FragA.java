@@ -123,38 +123,39 @@ public class FragA extends Fragment {
         return totalSum ;
     }
 
-    BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String getResultData = intent.getStringExtra(ConstantValue.START_SERVICE_RESULT);
-            showResultLabel(getResultData);
-        }
-    };
+//    BroadcastReceiver receiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            String getResultData = intent.getStringExtra(ConstantValue.START_SERVICE_RESULT);
+//            showResultLabel(getResultData);
+//        }
+//    };
 
     // call show result label ..
     public void showResultLabel(String str){
        txvShowResult.setVisibility(View.VISIBLE);
        txvShowResult.setText(str);
     }
-    @Override
-    public void onResume() {
-        IntentFilter fliter = new IntentFilter(ConstantValue.MY_ACTION_SERVICE);
-        getActivity().registerReceiver(receiver,fliter);
-        super.onResume();
-    }
+//    @Override
+//    public void onResume() {
+//        IntentFilter fliter = new IntentFilter(ConstantValue.MY_ACTION_SERVICE);
+//        getActivity().registerReceiver(receiver,fliter);
+//        super.onResume();
+//    }
 
-    @Override
-    public void onPause() {
-        getActivity().unregisterReceiver(receiver);
-        super.onPause();
-    }
+//    @Override
+////    public void onPause() {
+////        getActivity().unregisterReceiver(receiver);
+////        super.onPause();
+//    }
 
-      public class StaticallyBroadcastInner extends BroadcastReceiver {
+      public static class StaticallyBroadcastInner extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             //TODO: receive message here .. then call change the label to visible, and put some msg.
             String str= intent.getStringExtra(ConstantValue.START_SERVICE_RESULT);
-           showResultLabel(str);
+//           showResultLabel(str);
+            Toast.makeText(context," we receive action = "+ str,Toast.LENGTH_LONG).show();
         }
     }
 }

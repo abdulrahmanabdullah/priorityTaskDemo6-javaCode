@@ -25,7 +25,12 @@
         </activity>
 
         <service android:name=".services.TaskService" />
-        <receiver android:name=".Fragments.FragA$StaticallyBroadcastInner" />
+        <receiver android:name=".Fragments.FragA$StaticallyBroadcastInner" >
+            <intent-filter>
+                <action android:name="test.my.action"/>
+            </intent-filter>
+
+        </receiver>
     </application>
 
 
