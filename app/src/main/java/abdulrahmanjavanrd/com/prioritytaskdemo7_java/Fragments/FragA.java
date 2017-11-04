@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class FragA extends Fragment {
    private List<String> spinner1List = new ArrayList<>();
    private List<String> spinner2List = new ArrayList<>();
    private TextView taskType ;
-   public TextView txvShowResult ;
+   public static TextView txvShowResult ;
     public  int totalSum ;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,11 +132,12 @@ public class FragA extends Fragment {
 //        }
 //    };
 
-    // call show result label ..
-    public void showResultLabel(String str){
+    // TODO: call show result label, onReceive method .
+    public static void showResultLabel(String str){
        txvShowResult.setVisibility(View.VISIBLE);
        txvShowResult.setText(str);
     }
+
 //    @Override
 //    public void onResume() {
 //        IntentFilter fliter = new IntentFilter(ConstantValue.MY_ACTION_SERVICE);
@@ -149,13 +151,14 @@ public class FragA extends Fragment {
 ////        super.onPause();
 //    }
 
+
       public static class StaticallyBroadcastInner extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             //TODO: receive message here .. then call change the label to visible, and put some msg.
             String str= intent.getStringExtra(ConstantValue.START_SERVICE_RESULT);
-//           showResultLabel(str);
-            Toast.makeText(context," we receive action = "+ str,Toast.LENGTH_LONG).show();
+            showResultLabel(str);
         }
+
     }
 }
